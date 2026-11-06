@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Avatar AI — Preview</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <script type="module" src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
+
+    <link rel="stylesheet" href="src/index.css" />
+
+    <!-- Vite import.meta.env shim. Point at the hosted backend (login is a
+         client-side mock, so the app boots regardless of backend reachability). -->
+    <script>
+      window.__VITE_ENV__ = { VITE_BACKEND: 'hosted' };
+      window.process = { env: {} };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.25.6/babel.min.js"></script>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.2.0",
+        "react/": "https://esm.sh/react@19.2.0/",
+        "react/jsx-runtime": "https://esm.sh/react@19.2.0/jsx-runtime",
+        "react-dom": "https://esm.sh/react-dom@19.2.0?deps=react@19.2.0",
+        "react-dom/": "https://esm.sh/react-dom@19.2.0/",
+        "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?deps=react@19.2.0",
+        "react-markdown": "https://esm.sh/react-markdown@10.1.0?deps=react@19.2.0,react-dom@19.2.0",
+        "remark-math": "https://esm.sh/remark-math@6.0.0",
+        "rehype-katex": "https://esm.sh/rehype-katex@7.0.1",
+        "@mediapipe/tasks-vision": "https://esm.sh/@mediapipe/tasks-vision@0.10.35",
+        "@met4citizen/talkinghead": "https://esm.sh/@met4citizen/talkinghead@1.7.0?external=three&deps=three@0.185.1",
+        "three": "https://esm.sh/three@0.185.1",
+        "three/": "https://esm.sh/three@0.185.1/",
+        "three/addons/": "https://esm.sh/three@0.185.1/examples/jsm/",
+        "three/examples/jsm/": "https://esm.sh/three@0.185.1/examples/jsm/"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./loader.js"></script>
+  </body>
+</html>

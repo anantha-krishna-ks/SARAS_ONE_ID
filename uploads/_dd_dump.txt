@@ -1,0 +1,928 @@
+
+===== Home ===== (35 rows, 9 cols)
+2| 0 |  | 1 |  | Table Name | Unique | Kasi | Balaji | Desayya
+3|  | PostgreSQL | 8 |  | tenants | 7
+4|  |  | 10 |  | tenant_config | 7
+5|  |  | 12 |  | organization_structure | 7
+6|  |  |  | Application Client | app_clients
+7|  | PostgreSQL |  | Lookups | lookups
+8|  | PostgreSQL |  | Persmissions | permissions
+9|  | PostgreSQL | Role | Roles | roles
+10|  | PostgreSQL | 23 |  | role_permissions
+11|  | PostgreSQL |  | Accounts | accounts
+12|  | PostgreSQL |  | Profiles | profiles
+13|  | PostgreSQL |  | Password History | password_history
+14|  | PostgreSQL |  | Credentials | crendentials
+15|  | PostgreSQL |  | Sessions | sessions
+16|  | PostgreSQL |  | Session Tokens | session_tokens
+17|  | PostgreSQL | RBAC | Account Roles | account_roles
+18|  | PostgreSQL | 40 |  | account_role_ous
+19|  | PostgreSQL |  | Events | events
+20|  | PostgreSQL |  | Notifications | notifications
+21|  | PostgreSQL |  | Jobs | jobs
+22|  | PostgreSQL |  | Job Schedules | job_schedules
+23|  | PostgreSQL |  | Job Schedule Executions | job_schedule_executions
+24|  | PostgreSQL |  | Navigation Logs | navigation_logs
+25|  | PostgreSQL |  | Application Logs | application_logs
+26|  | PostgreSQL |  | Audit Logs | audit_logs
+27|  | PostgreSQL | ABAC | ABAC Environment Variables | abac_env_variables
+28|  | PostgreSQL | 61 |  | abac_resource_attributes
+29|  | PostgreSQL | 63 |  | abac_account_attributes
+30|  | PostgreSQL | 65 |  | abac_policies | 7
+31|  |  | 67 |  | abac_policy_conditions | 7
+32|  |  | 69 |  | abac_permission_policies
+33|  | PostgreSQL | Integration | Features | int_features
+34|  | PostgreSQL | 74 |  | int_requests
+35|  | PostgreSQL | 76 |  | int_request_data
+36|  |  | 78 |  | int_staged_data
+
+===== comm_columns ===== (15 rows, 5 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type
+3|  |  | tenant_id | BIGINT
+4|  |  | is_default | BOOLEAN
+5|  |  | dyno_columns | JSONB
+6|  |  | created_at | TIMESTAMPTZ
+7|  |  | created_by | BIGINT
+8|  |  | modified_at | TIMESTAMPTZ
+9|  |  | modified_by | BIGINT
+10|  |  | deleted_at | TIMESTAMPTZ
+11|  |  | deleted_by | BIGINT
+12|  |  | is_deleted | BOOLEAN
+13|  |  | archived_at | TIMESTAMPTZ
+14|  |  | archived_by | BIGINT
+15|  |  | archive_status | SMALLINT | set to archive; copied to archived; verificed in archived
+
+===== tenants ===== (35 rows, 13 cols)
+1| Home
+2|  | Domain Name | Control | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  |  | id | BIGINT |  | Y |  | Y | [pk, increment] | OK
+4|  |  |  | tenant_id | BIGINT
+5|  | Code | Text Box | code | VARCHAR(20) |  |  |  |  | [null] | OK
+6|  | Name | Text Box | name | VARCHAR(200) |  |  |  | Y | [not null] | OK
+7|  | Address-1 | Text Box | address1 | VARCHAR(250)
+8|  | Address-2 | Text Box | address2 | VARCHR(250)
+9|  | City | Text Box | city | VARCHAR(100)
+10|  | State | Text Box | state | VARCHAR(100)
+11|  | Country | Dropdown | country | VARCHAR(100)
+12|  | PIN | Text Box | pin | VARCHAR(15)
+13|  | Contact Person Name | Text Box | contact_name | VARCHAR(200)
+14|  | Contact Person Email | Text Box | contact_email | BYTEA
+15|  | Contact Person Mobile No. | Text Box | contact_mobile_no | BYTEA
+16|  | Contact Person Designatiion | Text Box | contact_designation | VARCHAR(100)
+17|  | Logo | File Upload | logo_url | JSONB | Stores logo file location info. |  |  |  | [null] | OK
+18|  | Domain Name | Text Box | domain | VARCHAR(500) |  |  |  |  | [null] | OK
+19|  |  |  | is_allow_login | BOOLEAN | Whether allow login or not. |  |  |  | [null] | OK
+20|  |  |  | allow_login_remarks | VARCHAR(500) | If not allowed, stores reason |  |  |  | [null] | OK
+21|  |  |  | status | SMALLINT | 1-Draft, 5-Provisioning, 9-Active, 11-Suspended, 15-Expired, 19-Deactivated |  |  |  | [null] | OK
+22|  |  |  | is_active | BOOLEAN | Whether active or not |  |  |  | [ not null, default=true ] | OK
+23|  |  |  | tenant_uuid | UUID |  |  |  |  | [null] | OK
+24|  |  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+25|  |  |  | dyno_columns | JSONB |  |  |  |  |  | OK
+26|  |  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+27|  |  |  | created_by | BIGINT |  |  |  |  |  | OK
+28|  |  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+29|  |  |  | modified_by | BIGINT |  |  |  |  |  | OK
+30|  |  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+31|  |  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+32|  |  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+33|  |  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+34|  |  |  | archived_by | BIGINT |  |  |  |  |  | OK
+35|  |  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== tenant_config ===== (18 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [pk, id>tenants.id] | OK
+4|  | Tenant | tenant_id | BIGINT
+5|  | Category | category | VARCHAR(50) |  |  |  |  | [null] | OK
+6|  | Configuration | configuration | JSONB |  |  |  | Y | [not null] | OK
+7|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+8|  |  | dyno_columns | JSONB |  |  |  |  |  | OK
+9|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+10|  |  | created_by | BIGINT |  |  |  |  |  | OK
+11|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+12|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+13|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+14|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+15|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+16|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+17|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+18|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== organization_structure ===== (24 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | ou_id | BIGINT |  | Y |  | Y | [pk, increment] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  |  | Y | [ not null ] | OK
+5|  | Parent | parent_id | BIGINT |  |  | parent_id>organization_units.id | Y | [null] | OK
+6|  | Code | code | VARCHAR(50) |  |  |  |  | [null] | OK
+7|  | Name | name | VARCHAR(200) |  |  |  | Y | [not null] | OK
+8|  | Type | ou_type_id | BIGINT | ex.Org Group, Organization, Branch etc. |  |  | Y | [not null] | OK
+9|  | Work Breakdown Structure | wbs | VARCHAR(500) |  |  |  | Y | [null] | OK
+10|  | Level No. | hierarchy_level | SMALLINT |  |  |  | Y | [null] | OK
+11|  | Active | is_active | BOOLEAN | Whether active or not |  |  |  | [ not null, default=true ] | OK
+12|  |  | ou_uuid | UUID |  |  |  |  | [null] | OK
+13|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+14|  |  | dyno_columns | JSONB |  |  |  |  |  | OK
+15|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | created_by | BIGINT |  |  |  |  |  | OK
+17|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+18|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+19|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+21|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+22|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+24|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== app_clients ===== (23 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>organization_units.ou_id | Y | [ not null ] | OK
+5|  | Code | code | VARCHAR(50) |  |  |  |  |  | OK
+6|  | Name | name | VARCHAR(200) |  |  |  | Y | [ not null ] | OK
+7|  | Identifier | app_identifier | VARCHAR(200) |  |  |  |  |  | OK
+8|  | Description | description | VARCHAR(500) |  |  |  |  | [ null ] | OK
+9|  | Redirect URI | redirect_uri | TEXT |  |  |  |  | [ null ] | OK
+10|  | Active | is_active | BOOLEAN | Whether active or not. |  |  |  | [ null, default=true ] | OK
+11|  |  | app_uuid | UUID |  |  |  |  | [ null ] | OK
+12|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+13|  |  | dyno_columns | JSONB
+14|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+15|  |  | created_by | BIGINT |  |  |  |  |  | OK
+16|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+17|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+18|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+20|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+21|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+22|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+23|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== lookups ===== (22 rows, 11 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT | Y |  | Y | [ pk, increment ] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  | Y | [ not null ] | OK
+5|  | Lookup Set | lookup_set | VARCHAR(50) |  | ex.Org Units, Employee Types etc. | Y | [ null ] | OK
+6|  | Code | code | VARCHAR(50) |  |  |  | [ null ] | OK
+7|  | Name | name | VARCHAR(200) |  |  | Y | [ not null ] | OK
+8|  | Description | description | VARCHAR(500) |  |  |  | [ null ] | OK
+9|  | Active | is_active | BOOLEAN |  | Whether active or not. |  | [ null, default: true ] | OK
+10|  |  | lookup_uuid | UUID |  |  |  | [ null ] | OK
+11|  |  | is_default | BOOLEAN |  |  |  |  | OK
+12|  |  | dyno_columns | JSONB
+13|  |  | created_at | TIMESTAMPTZ |  |  |  |  | OK
+14|  |  | created_by | BIGINT |  |  |  |  | OK
+15|  |  | modified_at | TIMESTAMPTZ |  |  |  |  | OK
+16|  |  | modified_by | BIGINT |  |  |  |  | OK
+17|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  | OK
+18|  |  | deleted_by | BIGINT |  |  |  |  | OK
+19|  |  | is_deleted | BOOLEAN |  |  |  |  | OK
+20|  |  | archived_at | TIMESTAMPTZ |  |  |  |  | OK
+21|  |  | archived_by | BIGINT |  |  |  |  | OK
+22|  |  | archive_status | SMALLINT |  |  |  |  | OK
+
+===== permissions ===== (24 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Parent | parent_id | BIGINT |  |  | parent_id>permissions.id | Y |  | OK
+5|  | Tenant | tenant_id | BIGINT |  |  |  | Y |  | OK
+6|  | Application | app_id | BIGINT |  |  | app_id>app_client.id | Y |  | OK
+7|  | Code | code | VARCHAR(50) |  |  |  |  |  | OK
+8|  | Name | name | VARCHAR(200) |  |  |  | Y |  | OK
+9|  | Description | description | VARCHAR(500) |  |  |  |  |  | OK
+10|  | Work Breakdown Structure | wbs | VARCHAR(500) |  |  |  | Y |  | OK
+11|  | Active | is_active | BOOLEAN | Whether active or not. |  |  |  |  | OK
+12|  |  | permission_uuid | UUID |  |  |  |  |  | OK
+13|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+14|  |  | dyno_columns | JSONB
+15|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | created_by | BIGINT |  |  |  |  |  | OK
+17|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+18|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+19|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+21|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+22|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+24|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== roles ===== (21 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ] | Y | OK
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id |  | Y | OK
+5|  | Code | code | VARCHAR(50) |  |  |  |  |  | OK
+6|  | Name | name | VARCHAR(200) |  |  |  |  | Y | OK
+7|  | Description | description | VARCHAR(500) |  |  |  |  |  | OK
+8|  | Active | is_active | BOOLEAN | Whether active or not. |  |  |  |  | OK
+9|  |  | role_uuid | UUID |  |  |  |  |  | OK
+10|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+11|  |  | dyno_columns | JSONB
+12|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+13|  |  | created_by | BIGINT |  |  |  |  |  | OK
+14|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+15|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+16|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+17|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+18|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+19|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+21|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== role_permissions ===== (19 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ] | Y | OK
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | Y | OK
+5|  | Role | role_id | BIGINT |  |  | role_id>roles.id |  | Y | OK
+6|  | Privilege | permission_id | BIGINT |  |  | permission_id>permissions.id |  | Y | OK
+7|  | Active | is_active | BOOLEAN |  |  |  |  |  | OK
+8|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+9|  |  | dyno_columns | JSONB
+10|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+11|  |  | created_by | BIGINT |  |  |  |  |  | OK
+12|  |  | modified_at | TIMESTAMPTZ | not using
+13|  |  | modified_by | BIGINT | not using
+14|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+15|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+16|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+17|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+18|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+19|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== accounts ===== (29 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id | Y | [ not null ] | OK
+5|  | Login Name | login_name | BYTEA |  |  |  | Y | [ not null ] | OK
+6|  | Password Salt | password_salt | VARCHAR(50) |  |  |  |  | [ null ] | OK
+7|  | Password | password | TEXT | hash |  |  |  | [ null ] | OK
+8|  |  | type | SMALLINT | human, service, api_client, system
+9|  |  | is_mfa_enabled | BOOLEAN
+10|  |  | is_password_set | BOOLEAN
+11|  |  | last_login_at | TIMESTAMPTZ
+12|  |  | last_failed_login_at | TIMESTAMPTZ
+13|  |  | failed_login_attempts | SMALLINT
+14|  |  | locked_until_at | TIMESTAMPTZ
+15|  | Status | status | SMALLINT | 1-Invited, 9-Active, 15-Locked, 11-Suspended, 19-Inactive |  |  |  | [ null ] | OK
+16|  | Active | is_active | BOOLEAN |  |  |  |  | [ null, default=true ] | OK
+17|  |  | account_uuid | UUID |  |  |  |  | [ null ] | OK
+18|  |  | is_default | BOOLEAN |  |  |  |  |  | OK
+19|  |  | dyno_columns | JSONB
+20|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+21|  |  | created_by | BIGINT |  |  |  |  |  | OK
+22|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+24|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+25|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+26|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+27|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+28|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+29|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== profiles ===== (33 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Reporting Manager | reporting_manager_id | BIGINT |  |  | reporting_manager_id>accounts.id | Y | [ null ] | OK
+5|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id | Y | [ not null ] | OK
+6|  | Profile Picture | profile_picture_file_info | JSONB |  |  |  |  | [ null ] | OK
+7|  | User Name | name | VARCHAR(200) | User display name |  |  |  | [ null ] | OK
+8|  | Mobile No. | mobile_no | BYTEA | encrypted |  |  |  | [ null ] | OK
+9|  | Email | email | BYTEA | encrypted |  |  |  | [ null ] | OK
+10|  | Default Role | default_role_id | BIGINT |  |  | default_role_id>roles.id |  | [ null ] | OK
+11|  | Failed Loggin Attempts | failed_login_count | SMALLINT |  |  |  |  | [ null ] | OK
+12|  | Lockout Until | lockout_until | TIMESTAMPTZ |  |  |  |  | [ null ] | OK
+13|  |  | ext_application | VARCHAR(50) |  |  |  |  | [ null ] | OK
+14|  |  | ext_user_id | VARCHAR(50) |  |  |  |  | [ null ] | OK
+15|  |  | activation_link | VARCHAR(500) |  |  |  |  | [ null ] | OK
+16|  |  | account_uuid | UUID |  |  |  |  | [ null ] | OK
+17|  |  | account_type_id | SMALLINT | external, internal
+18|  |  | type | VARCHAR(20) | human, service, api_client, system
+19|  |  | date_of_birth | DATE
+20|  |  | gender | SMALLINT | 0-Female, 1-Male
+21|  |  | designation | VARCHAR(200)
+22|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+23|  |  | dyno_columns | JSONB
+24|  |  | created_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+25|  |  | created_by | BIGINT | not using |  |  |  |  | OK
+26|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+27|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+28|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+29|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+30|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+31|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+32|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+33|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== password_history ===== (20 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  |  | Y | [ not null ] | OK
+5|  |  | account_id |  |  |  | account_id>accounts.id
+6|  |  | old_password |  | hashed value
+7|  |  | reason |  | rotation, reset, policy_enforcement, admin_reset
+8|  |  | expires_at | TIMESTAMPTZ
+9|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+10|  |  | dyno_columns | JSONB
+11|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+12|  |  | created_by | BIGINT |  |  |  |  |  | OK
+13|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+14|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+15|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+17|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+18|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+20|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== credentials ===== (24 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Constraints | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y | [ pk, increment ] | OK
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id | Y | [ not null ] | OK
+5|  |  | account_id | BIGINT
+6|  |  | type | SMALLINT | password, phone_otp, email_otp, magic_link, oauth, passkey
+7|  |  | identifier | TEXT | email, phone, oauth subject, etc.
+8|  |  | secret | TEXT | password hash, otp secret, passkey public key
+9|  |  | provider | VARCHAR(50) | google, microsoft, apple, local
+10|  |  | is_verified | BOOLEAN
+11|  |  | last_used_at | TIMESTAMPTZ
+12|  |  | revoked_at | TIMESTAMPTZ
+13|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+14|  |  | dyno_columns | JSONB
+15|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | created_by | BIGINT |  |  |  |  |  | OK
+17|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+18|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+19|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+21|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+22|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+24|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== sessions ===== (32 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | [ not null ] | OK
+5|  | 263 |  | BIGINT | 264 |  |  | 280
+6|  |  |  | VARCHAR(50) | 281
+7|  |  |  | VARCHAR(200) | 282
+8|  |  | device_id | VARCHAR(200) | 284
+9|  |  |  | VARCHAR(100) | 285
+10|  |  |  | VARCHAR(50) | 286
+11|  |  | ip_address | VARCHAR(50) | 288
+12|  |  |  | TIMESTAMPTZ | 289
+13|  |  |  | TIMESTAMPTZ | 269
+14|  |  |  | TIMESTAMPTZ | 290
+15|  |  | geolocation | GEOGRAPHY(POINT, 4326) | 134
+16|  |  |  | VARCHAR(100) | 128
+17|  |  |  | VARCHAR(100) | 293
+18|  |  | session_status | VARCHAR(30) | Active; Closed | 297
+19|  |  |  | TIMESTAMPTZ | 298
+20|  |  |  | TEXT | 299
+22|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+23|  |  | dyno_columns | JSONB
+24|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+25|  |  | created_by | BIGINT |  |  |  |  |  | OK
+26|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+27|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+28|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+29|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+30|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+31|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+32|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+33|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== session_tokens ===== (27 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  |  | OK
+5| 263 |  |  | BIGINT | 300
+6|  |  |  | BIGINT | 301
+7| 302 |  |  | TEXT | 303
+8|  |  |  | BIGINT | 304
+9|  |  |  | BIGINT | 305
+10|  |  |  | TIMESTAMPTZ | 269
+11|  |  |  | TIMESTAMPTZ | 278
+12|  |  |  | TIMESTAMPTZ | 306
+13|  |  |  | TIMESTAMPTZ | 279
+14|  |  |  | TIMESTAMPTZ | 307
+15|  |  |  | VARCHAR(200) | 85
+16|  |  |  | BOOLEAN | not using |  |  |  |  | OK
+17|  |  | dyno_columns | JSONB
+18|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | created_by | BIGINT |  |  |  |  |  | OK
+20|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+21|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+22|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+24|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+25|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+26|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+27|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== account_roles ===== (20 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ] | Y | OK
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | Y | OK
+5|  | Account | account_id | BIGINT |  |  | account_id>accounts.id |  | Y | OK
+6|  | Role | role_id | BIGINT |  |  | role_id>roles.id |  | Y | OK
+7|  | Default Organization Unit | default_ou_id | BIGINT |  |  | default_ou_id>organization_units.id |  | Y | OK
+8|  |  | account_role_uuid | UUID |  |  |  |  |  | OK
+9|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+10|  |  | dyno_columns | JSONB
+11|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+12|  |  | created_by | BIGINT |  |  |  |  |  | OK
+13|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+14|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+15|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+17|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+18|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+20|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== account_role_ous ===== (23 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ] | Y | OK
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | Y | OK
+5|  |  | account_role_id | BIGINT |  |  | account_role_id>account_roles.account_role_id |  | Y | OK
+6|  | Account | account_id | BIGINT |  |  |  |  | Y | OK
+7|  | Role | role_id | BIGINT |  |  |  |  | Y | OK
+8|  | Organization Unit | ou_id | BIGINT |  |  |  |  | Y | OK
+9|  | Access Level | access_level | VARCHAR(50) | self / descendants+self / descendants / all |  |  |  | Y | OK
+10|  | Effective From | effect_from | TIMESTAMPTZ |  |  |  |  |  | OK
+11|  | Effective To | effect_to | TIMESTAMPTZ |  |  |  |  |  | OK
+12|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+13|  |  | dyno_columns | JSONB
+14|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+15|  |  | created_by | BIGINT |  |  |  |  |  | OK
+16|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+17|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+18|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+20|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+21|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+22|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+23|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== events ===== (27 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | app_id | BIGINT |  |  |  | app_id>app_clients.id
+6|  |  | code | VARCHAR(50)
+7|  |  | name | VARCHAR(200)
+8|  |  | description | VARCHAR(500)
+9|  |  | parameters | VARCHAR(200)[]
+10|  |  | priority_id | SMALLINT | 1-High, 2-Mediem, 3-Low
+11|  |  | subject | VARCHAR(200)
+12|  |  | short msg | VARCHAR(250)
+13|  |  | long msg | VARCHAR(500)
+14|  |  | channels[] | VARCHAR(200)[]
+15|  |  | is_active | BOOLEAN
+16|  |  | is_default | BOOLEAN | not using
+17|  |  | dyno_columns | JSONB
+18|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | created_by | BIGINT |  |  |  |  |  | OK
+20|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+21|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+22|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+24|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+25|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+26|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+27|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== notifications ===== (26 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | event_id | BIGINT |  |  |  | event_id>events.id
+6|  |  | sender_id | BIGINT |  |  |  | sender_id>accounts.id
+7|  |  | recipient_id | BIGINT |  |  |  | recipient_id>accounts.id
+8|  |  | channel_id | BIGINT |  |  |  | channel_id>lookups.id
+9|  |  | message | TEXT
+10|  |  | status | SMALLINT | 1-Draft, 4-Queued, 7-Processing, 9-Sent, 12-Delivered, 15-Failed, 19-Cancelled
+11|  |  | completed_at | TIMESTAMPTZ
+12|  |  | iteration_no | SMALLINT
+13|  |  | priority_id | SMALLINT | 1-High, 2-Mediem, 3-Low
+14|  |  | failed_reason | JSONB
+15|  |  | is_default | BOOLEAN | not using
+16|  |  | dyno_columns | JSONB
+17|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+18|  |  | created_by | BIGINT |  |  |  |  |  | OK
+19|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+21|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+22|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+23|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+24|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+25|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+26|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== jobs ===== (27 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT |  |  | tenant_id>tenants.id
+5|  |  | code | VARCHAR(50)
+6|  |  | name | VARCHAR(200)
+7|  |  | description | VARCHAR(500)
+8|  |  | assembly_name | VARCHAR(500)
+9|  |  | class_name | VARCHAR(500)
+10|  |  | is_allow_parallel_execution | BOOLEAN
+11|  |  | is_active | BOOLEAN
+12|  |  | priority | SMALLINT | it should be unique
+13|  |  | max_retries | SMALLINT
+14|  |  | retry_interval_seconds | SMALLINT
+15|  |  | parameters | VARCHAR(200)[] | ?
+16|  |  | is_default | BOOLEAN | not using
+17|  |  | dyno_columns | JSONB
+18|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | created_by | BIGINT |  |  |  |  |  | OK
+20|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+21|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+22|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+24|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+25|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+26|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+27|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== job_schedules ===== (24 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | job_id | BIGINT |  |  | job_id>jobs.id
+6|  |  | schedule_name | VARCHAR(200)
+7|  |  | type_id | SMALLINT | cron
+8|  |  | cron_expression | JSONB
+9|  |  | start_date | TIMESTAMPTZ
+10|  |  | end_date | TIMESTAMPTZ
+11|  |  | is_active | BOOLEAN
+12|  |  | parameters | VARCHAR(200)[]
+13|  |  | is_default | BOOLEAN | not using
+14|  |  | dyno_columns | JSONB
+15|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | created_by | BIGINT |  |  |  |  |  | OK
+17|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+18|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+19|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+20|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+21|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+22|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+23|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+24|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== job_schedule_executions ===== (25 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | job_id | BIGINT
+6|  |  | job_schedule_id | BIGINT |  |  | job_schedule_id>job_schedules.id
+7|  |  | status | SMALLINT | Queued, Running, Completed, Failed, Cancelled, TimedOut, Skipped
+8|  |  | started_at | TIMESTAMPTZ
+9|  |  | ended_at | TIMESTAMPTZ
+10|  |  | duration_ms | INT
+11|  |  | retry_no | SMALLINT
+12|  |  | error_message | VARCHAR(MAX)
+13|  |  | parameters | VARCHAR(200)[]
+14|  |  | is_default | BOOLEAN | not using
+15|  |  | dyno_columns | JSONB
+16|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+17|  |  | created_by | BIGINT |  |  |  |  |  | OK
+18|  |  | modified_at | TIMESTAMPTZ |  |  |  |  |  | OK
+19|  |  | modified_by | BIGINT |  |  |  |  |  | OK
+20|  |  | deleted_at | TIMESTAMPTZ |  |  |  |  |  | OK
+21|  |  | deleted_by | BIGINT |  |  |  |  |  | OK
+22|  |  | is_deleted | BOOLEAN |  |  |  |  |  | OK
+23|  |  | archived_at | TIMESTAMPTZ |  |  |  |  |  | OK
+24|  |  | archived_by | BIGINT |  |  |  |  |  | OK
+25|  |  | archive_status | SMALLINT |  |  |  |  |  | OK
+
+===== navigation_logs ===== (24 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | session_id | BIGINT |  |  | session_id>sessions.id
+6|  |  | log_timestamp | TIMESTAMPTZ
+7|  |  | account_id | BIGINT
+8|  |  | account_name | VARCHAR(200)
+9|  |  | account_role | VARCHAR(200)
+10|  |  | app_name | VARCHAR(200)
+11|  |  | navigated_page | VARCHAR(200)
+12|  |  | navigated_path | vARCHAR(500)
+13|  |  | is_default | BOOLEAN | not using
+14|  |  | dyno_columns | JSONB
+15|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+16|  |  | created_by | BIGINT |  |  |  |  |  | OK
+17|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+18|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+19|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+20|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+21|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+22|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+23|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+24|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== application_logs ===== (23 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | Y | OK
+5|  |  | level | SMALLINT
+6|  |  | action_name | VARCHAR(500) | Page.Action
+7|  |  | message | TEXT
+8|  |  | exception | TEXT
+9|  |  | account_id | BIGINT
+10|  |  | category | TEXT
+11|  |  | event_id | TEXT
+12|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+13|  |  | dyno_columns | JSONB
+14|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+15|  |  | created_by | BIGINT |  |  |  |  |  | OK
+16|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+17|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+18|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+19|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+20|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+21|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+22|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+23|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== audit_logs ===== (25 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  |  |  | Y | OK
+5|  |  | session_id | BIGINT |  |  | session_id>sessions.id
+6|  |  | log_timestamp | TIMESTAMPTZ
+7|  |  | account_id | BIGINT
+8|  |  | account_name | VARCHAR(200)
+9|  |  | account_role | VARCHAR(200)
+10|  |  | app_name | VARCHAR(200)
+11|  |  | entity | VARCHAR(200) | test
+12|  |  | entity_code | VARCHAR(200) | test-001
+13|  |  | action | VARCHAR(200)
+14|  |  | data_change | JSONB | [{ attribute_name: "dob", old_value: "2020-01-01", new_value: "2020-05-31" }]
+15|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+16|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+17|  |  | created_by | BIGINT |  |  |  |  |  | OK
+18|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+19|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+20|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+21|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+22|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+23|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+24|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+25|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== abac_env_variables ===== (17 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id |  | Y | OK
+5|  |  | name | VARCHAR(200)
+6|  |  | data_type | VARCHAR(50) | ex. string, number, time etc.
+7|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+8|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+9|  |  | created_by | BIGINT |  |  |  |  |  | OK
+10|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+11|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+12|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+13|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+14|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+15|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+16|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+17|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== abac_resource_attributes ===== (17 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  | Tenant | tenant_id | BIGINT |  |  | tenant_id>tenants.id |  | Y | OK
+5|  |  | name | VARCHAR(200)
+6|  |  | data_type | VARCHAR(50) | ex. string, number, time etc.
+7|  |  | is_default | BOOLEAN | not using |  |  |  |  | OK
+8|  |  | created_at | TIMESTAMPTZ |  |  |  |  |  | OK
+9|  |  | created_by | BIGINT |  |  |  |  |  | OK
+10|  |  | modified_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+11|  |  | modified_by | BIGINT | not using |  |  |  |  | OK
+12|  |  | deleted_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+13|  |  | deleted_by | BIGINT | not using |  |  |  |  | OK
+14|  |  | is_deleted | BOOLEAN | not using |  |  |  |  | OK
+15|  |  | archived_at | TIMESTAMPTZ | not using |  |  |  |  | OK
+16|  |  | archived_by | BIGINT | not using |  |  |  |  | OK
+17|  |  | archive_status | SMALLINT | not using |  |  |  |  | OK
+
+===== abac_account_attributes ===== (19 rows, 11 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y
+4|  |  | tenant_id | BIGINT |  |  |  | Y
+5|  |  | account_id | BIGINT |  |  | account_id>accounts.account_id | Y
+6|  |  | attribute_name | VARCHAR(200) | e.g Designation etc. |  |  | Y
+7|  |  | attribute_value | VARCHAR(500) |  |  |  | Y
+8|  |  | data_type | VARCHAR(50)
+9|  |  | is_default | BOOLEAN
+10|  |  | created_at | TIMESTAMPTZ
+11|  |  | created_by | BIGINT
+12|  |  | modified_at | TIMESTAMPTZ
+13|  |  | modified_by | BIGINT
+14|  |  | deleted_at | TIMESTAMPTZ
+15|  |  | deleted_by | BIGINT
+16|  |  | is_deleted | BOOLEAN
+17|  |  | archived_at | TIMESTAMPTZ
+18|  |  | archived_by | BIGINT
+19|  |  | archive_status | SMALLINT
+
+===== abac_policies ===== (19 rows, 11 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y
+4|  |  | tenant_id | BIGINT |  |  | tenant_id>tenants.id | Y
+5|  | Name | name | VARCHAR(200) |  |  |  | Y
+6|  | Active | is_active | BOOLEAN
+7|  |  | status | SMALLINT
+8|  |  | policy_uuid | UUID
+9|  |  | is_default | BOOLEAN
+10|  |  | created_at | TIMESTAMPTZ
+11|  |  | created_by | BIGINT
+12|  |  | modified_at | TIMESTAMPTZ
+13|  |  | modified_by | BIGINT
+14|  |  | deleted_at | TIMESTAMPTZ
+15|  |  | deleted_by | BIGINT
+16|  |  | is_deleted | BOOLEAN
+17|  |  | archived_at | TIMESTAMPTZ
+18|  |  | archived_by | BIGINT
+19|  |  | archive_status | SMALLINT
+
+===== abac_policy_conditions ===== (25 rows, 11 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y
+4|  |  | tenant_id | BIGINT |  |  |  | Y
+5|  |  | policy_id | BIGINT |  |  | policy_id>abac_policies.policy_id | Y
+6|  |  | data_type | VARCHAR(50)
+7|  |  | attribute1_type | VARCHAR(50) |  |  |  | Y
+8|  |  | attribute1_id | BIGINT
+9|  |  | attribute1_value | VARCHAR(200)
+10|  |  | operator | VARCHAR(10) |  |  |  | Y
+11|  |  | attribute2_type | VARCHAR(50) |  |  |  | Y
+12|  |  | attribute2_id | BIGINT
+13|  |  | attribute2_value | VARCHAR(200)
+14|  |  | id_uuid | UUID
+15|  |  | is_default | BOOLEAN
+16|  |  | created_at | TIMESTAMPTZ
+17|  |  | created_by | BIGINT
+18|  |  | modified_at | TIMESTAMPTZ
+19|  |  | modified_by | BIGINT
+20|  |  | deleted_at | TIMESTAMPTZ
+21|  |  | deleted_by | BIGINT
+22|  |  | is_deleted | BOOLEAN
+23|  |  | archived_at | TIMESTAMPTZ
+24|  |  | archived_by | BIGINT
+25|  |  | archive_status | SMALLINT
+
+===== abac_permission_policies ===== (17 rows, 11 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | Y
+4|  |  | tenant_id | BIGINT |  |  |  | Y
+5|  |  | permission_id | BIGINT |  |  | permission_id>permissions.id
+6|  |  | policy_id | BIGINT |  |  | policy_id>abac_policies.policy_id | Y
+7|  |  | is_default | BOOLEAN
+8|  |  | created_at | TIMESTAMPTZ
+9|  |  | created_by | BIGINT
+10|  |  | modified_at | TIMESTAMPTZ
+11|  |  | modified_by | BIGINT
+12|  |  | deleted_at | TIMESTAMPTZ
+13|  |  | deleted_by | BIGINT
+14|  |  | is_deleted | BOOLEAN
+15|  |  | archived_at | TIMESTAMPTZ
+16|  |  | archived_by | BIGINT
+17|  |  | archive_status | SMALLINT
+
+===== int_features ===== (26 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | app_id | BIGINT |  |  | app_id>app_clients.id
+6|  |  | code | VARCHAR(50) | EXCEL_IMPORT, Text, SAP_HR, WORKDAY
+7|  |  | name | VARCHAR(200)
+8|  |  | type_id | SMALLINT | file, plugin (api)
+9|  |  | auth_type_id | SMALLINT
+10|  |  | endpoint_url | VARCHAR(500)
+11|  |  | last_processed_at | TIMESTAMPTZ
+12|  |  | data_contract | JSONB | Stores data mapping info and its rules
+13|  |  | entity_name | VARCHAR(200)
+14|  |  | job_id | BIGINT |  |  | job_id>jobs.id
+15|  |  | is_active | BOOLEAN
+16|  |  | is_default | BOOLEAN
+17|  |  | created_at | TIMESTAMPTZ
+18|  |  | created_by | BIGINT
+19|  |  | modified_at | TIMESTAMPTZ
+20|  |  | modified_by | BIGINT
+21|  |  | deleted_at | TIMESTAMPTZ
+22|  |  | deleted_by | BIGINT
+23|  |  | is_deleted | BOOLEAN
+24|  |  | archived_at | TIMESTAMPTZ
+25|  |  | archived_by | BIGINT
+26|  |  | archive_status | SMALLINT
+
+===== int_requests ===== (21 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | app_id | BIGINT
+6|  |  | feature_id | BIGINT |  |  | feature_id>int_features.id
+7|  |  | type_id | SMALLINT | file, plugin
+8|  |  | data_file_info | JSONB | stores the file stored location, file type etc.
+9|  |  | entity_name | VARCHAR(200)
+10|  |  | status | SMALLINT |  |  |  | [ NOT NULL, DEFAULT 0 ]
+11|  |  | is_default | BOOLEAN
+12|  |  | created_at | TIMESTAMPTZ
+13|  |  | created_by | BIGINT
+14|  |  | modified_at | TIMESTAMPTZ
+15|  |  | modified_by | BIGINT
+16|  |  | deleted_at | TIMESTAMPTZ
+17|  |  | deleted_by | BIGINT
+18|  |  | is_deleted | BOOLEAN
+19|  |  | archived_at | TIMESTAMPTZ
+20|  |  | archived_by | BIGINT
+21|  |  | archive_status | SMALLINT
+
+===== int_request_data ===== (22 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT
+5|  |  | app_id | BIGINT
+6|  |  | feature_id | BIGINT
+7|  |  | request_id | BIGINT |  |  | request_id>int_requests.id
+8|  |  | serial_no | INTEGER
+9|  |  | row_data | JSONB
+10|  |  | status_id | SMALLINT
+11|  |  | status_remarks | VARCHAR(200)
+12|  |  | is_default | BOOLEAN
+13|  |  | created_at | TIMESTAMPTZ
+14|  |  | created_by | BIGINT
+15|  |  | modified_at | TIMESTAMPTZ
+16|  |  | modified_by | BIGINT
+17|  |  | deleted_at | TIMESTAMPTZ
+18|  |  | deleted_by | BIGINT
+19|  |  | is_deleted | BOOLEAN
+20|  |  | archived_at | TIMESTAMPTZ
+21|  |  | archived_by | BIGINT
+22|  |  | archive_status | SMALLINT
+
+===== int_staged_data ===== (28 rows, 12 cols)
+1| Home
+2|  | Domain Name | Column Name | Data Type | Description | PK | FK | Constraints | ERD | Kasi | Balaji | Desayya
+3|  |  | id | BIGINT |  | Y |  | [ pk, increment ]
+4|  |  | tenant_id | BIGINT |  | Y
+5|  |  | app_id | BIGINT |  | Y
+6|  |  | feature_id | BIGINT |  | Y
+7|  |  | request_id | BIGINT |  | Y
+8|  |  | request_data_id | BIGINT |  | Y | request_data_id>int_request_data.id
+9|  |  | serial_no | INTEGER
+10|  |  | row_data | JSONB
+11|  |  | entity_name | VARCHAR(200)
+12|  |  | status_id | SMALLINT
+13|  |  | status_remarks | VARCHAR(200)
+14|  |  | attempts_count | SMALLINT
+15|  |  | processed_at | TIMESTAMPTZ
+16|  |  | ext_id | TEXT
+17|  |  | internal_id | BIGINT
+18|  |  | is_default | BOOLEAN
+19|  |  | created_at | TIMESTAMPTZ
+20|  |  | created_by | BIGINT
+21|  |  | modified_at | TIMESTAMPTZ
+22|  |  | modified_by | BIGINT
+23|  |  | deleted_at | TIMESTAMPTZ
+24|  |  | deleted_by | BIGINT
+25|  |  | is_deleted | BOOLEAN
+26|  |  | archived_at | TIMESTAMPTZ
+27|  |  | archived_by | BIGINT
+28|  |  | archive_status | SMALLINT

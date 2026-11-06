@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><template id="__bundler_thumbnail" data-bg-color="#0a4a8c"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="34" width="60" height="40" rx="5" fill="none" stroke="#fff" stroke-width="6"></rect><path d="M46 88h28M60 74v14" stroke="#fff" stroke-width="6" stroke-linecap="round"></path></svg></template><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><style>body{margin:0;background:#F4F6FA;font-family:Poppins,sans-serif;color:#1B2433}a{color:#0070E0}a:hover{color:#0a4a8c}*{box-sizing:border-box}</style></helmet>
+<div style="width:1320px;padding:28px 32px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div style="font-size:12px;color:#6B7689">Excelsoft Academy · Monitoring › Sessions</div>
+      <div style="font-size:24px;font-weight:600;color:#0a4a8c">Sessions</div>
+      <div style="font-size:13px;color:#6B7689">Sign-in sessions for Excelsoft Academy accounts. Expired history loads on demand.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span style="font-size:12px;color:#6B7689">Updated 2 min ago</span>
+      <button style="height:36px;padding:0 14px;border:1px solid #D6DEE9;background:#fff;border-radius:8px;font:500 13px Poppins;color:#1B2433">↻ Refresh</button>
+      <button style="height:36px;padding:0 14px;border:1px solid #D6DEE9;background:#fff;border-radius:8px;font:500 13px Poppins;color:#1B2433">Export</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+    <div style="background:#fff;border:1px solid #E3E8F0;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#6B7689">Sessions on 17 Aug</span><span style="font-size:24px;font-weight:600">63</span></div>
+    <div style="background:#fff;border:1px solid #E3E8F0;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#6B7689">Accounts signed in</span><span style="font-size:24px;font-weight:600">41</span></div>
+    <div style="background:#fff;border:1px solid #E3E8F0;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#6B7689">Accounts with 3+ sessions</span><span style="font-size:24px;font-weight:600;color:#B45309">4</span></div>
+    <div style="background:#fff;border:1px solid #E3E8F0;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#6B7689">Expired on 17 Aug</span><span style="font-size:24px;font-weight:600">118</span></div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E3E8F0;border-radius:12px;box-shadow:0 1px 2px rgba(16,24,40,.04);overflow:hidden">
+    <div style="display:flex;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid #EEF2F7">
+      <div style="flex:1;max-width:340px;height:36px;border:1px solid #D6DEE9;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:13px;white-space:nowrap;color:#8A94A6">Search name, email or IP</div>
+      <div style="height:36px;border:1px solid #0070E0;background:#EAF3FD;color:#0a4a8c;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:13px;font-weight:500;white-space:nowrap;gap:8px"><span style="font-size:12px;color:#6B7689">Date</span> 17 Aug 2026 <span style="color:#6B7689">✕</span></div>
+      <div style="height:36px;border:1px solid #D6DEE9;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:13px;white-space:nowrap">Device: Any ▾</div>
+      <div style="height:36px;border:1px solid #D6DEE9;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:13px;white-space:nowrap">Sessions ≥ 1 ▾</div>
+      <div style="margin-left:auto;display:flex;background:#F1F4F9;border-radius:8px;padding:3px;gap:2px">
+        <span style="padding:6px 14px;border-radius:6px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08);font-size:13px;font-weight:600;color:#0a4a8c">Active</span>
+        <span style="padding:6px 14px;font-size:13px;color:#6B7689">Expired</span>
+        <span style="padding:6px 14px;font-size:13px;color:#6B7689">All</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEF2F7;font-size:12.5px;color:#4B5668"><span>Showing sessions <strong style="color:#1B2433">active at any time on 17 Aug 2026</strong> (00:00–23:59 IST) · 41 accounts · 63 sessions</span><a href="#" style="margin-left:auto;font-weight:500;white-space:nowrap">Back to live view</a></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#EAF3FD;border-bottom:1px solid #D5E6FA;font-size:13px">
+      <strong style="color:#0a4a8c">2 accounts selected</strong><span style="color:#4B5668">· 5 active sessions</span>
+      <button style="margin-left:auto;height:32px;padding:0 14px;border:none;border-radius:8px;background:#DC2626;color:#fff;font:600 13px Poppins">Revoke all sessions (2 accounts)</button>
+      <button style="height:32px;padding:0 12px;border:1px solid #C9D3E0;border-radius:8px;background:#fff;font:500 13px Poppins">Clear</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:44px 2.4fr 1.1fr 1.2fr 1.8fr 1fr 230px;align-items:center;padding:10px 16px;background:#0a4a8c;color:#fff;font-size:12px;font-weight:600">
+      <span>☐</span><span>Account</span><span>Active sessions</span><span>Last activity</span><span>Last device · location</span><span>Expired (17 Aug)</span><span style="text-align:right">Actions</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:44px 2.4fr 1.1fr 1.2fr 1.8fr 1fr 230px;align-items:center;padding:12px 16px;border-bottom:1px solid #EEF2F7;background:#F7FAFE;font-size:13px">
+      <span style="color:#0070E0">☑</span>
+      <div style="display:flex;gap:10px;align-items:center"><span style="color:#0070E0">▾</span><div style="display:flex;flex-direction:column"><strong style="font-weight:600">Anita Kulkarni</strong><span style="font-size:12px;color:#6B7689">anita.k@academy.excelsoft.edu</span></div></div>
+      <span><span style="padding:3px 10px;border-radius:999px;background:#E7F6EC;color:#15803D;font-weight:600;font-size:12px">3 active</span></span>
+      <span>2 min ago</span>
+      <span>Chrome · macOS · Bengaluru</span>
+      <span style="color:#6B7689">2</span>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button style="height:30px;padding:0 10px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins">Hide</button><button style="height:30px;padding:0 10px;border:1px solid #F3C2C2;background:#FEF2F2;color:#B91C1C;border-radius:7px;font:600 12px Poppins;white-space:nowrap">Revoke all (3)</button></div>
+    </div>
+
+    <div style="padding:14px 16px 16px 60px;background:#F7FAFE;border-bottom:1px solid #E3E8F0;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px">
+        <strong style="font-size:13px;color:#0a4a8c">Sessions for Anita Kulkarni</strong>
+        <div style="margin-left:auto;display:flex;background:#E9EEF5;border-radius:7px;padding:2px">
+          <span style="padding:4px 12px;border-radius:5px;background:#fff;font-weight:600;color:#0a4a8c">Active 3</span><span style="padding:4px 12px;color:#6B7689">Expired 2</span><span style="padding:4px 12px;color:#6B7689">All</span>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #E3E8F0;border-radius:8px;overflow:hidden;font-size:12.5px">
+        <div style="display:grid;grid-template-columns:1fr 1.5fr 1.3fr 1fr 1fr 1fr 1.1fr 0.8fr 110px;padding:8px 12px;background:#F1F4F9;color:#4B5668;font-weight:600;font-size:11.5px">
+          <span>Session ID</span><span>Device / browser</span><span>Sign-in method</span><span>IP address</span><span>Started</span><span>Last activity</span><span>Expires</span><span>Status</span><span style="text-align:right">Action</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.5fr 1.3fr 1fr 1fr 1fr 1.1fr 0.8fr 110px;padding:10px 12px;border-top:1px solid #EEF2F7;align-items:center">
+          <span style="font-family:ui-monospace,Menlo,monospace">SES-88121</span><span>Chrome 128 · macOS 14.6</span><span>Password + TOTP</span><span>49.207.18.4</span><span>17 Aug, 09:02</span><span>2 min ago</span><span>17 Aug, 21:02</span><span style="color:#15803D;font-weight:600">● Active</span><span style="text-align:right"><button style="height:28px;padding:0 10px;border:1px solid #F3C2C2;background:#fff;color:#B91C1C;border-radius:6px;font:600 12px Poppins">Revoke</button></span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.5fr 1.3fr 1fr 1fr 1fr 1.1fr 0.8fr 110px;padding:10px 12px;border-top:1px solid #EEF2F7;align-items:center">
+          <span style="font-family:ui-monospace,Menlo,monospace">SES-88094</span><span>Safari 17 · iOS 17.6</span><span>Google SSO</span><span>106.51.72.10</span><span>17 Aug, 07:40</span><span>41 min ago</span><span>17 Aug, 19:40</span><span style="color:#B45309;font-weight:600">● Idle</span><span style="text-align:right"><button style="height:28px;padding:0 10px;border:1px solid #F3C2C2;background:#fff;color:#B91C1C;border-radius:6px;font:600 12px Poppins">Revoke</button></span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.5fr 1.3fr 1fr 1fr 1fr 1.1fr 0.8fr 110px;padding:10px 12px;border-top:1px solid #EEF2F7;align-items:center">
+          <span style="font-family:ui-monospace,Menlo,monospace">SES-88010</span><span>Edge 127 · Windows 11</span><span>Microsoft Entra</span><span>14.142.9.66</span><span>16 Aug, 18:15</span><span>3 h ago</span><span>18 Aug, 06:15</span><span style="color:#15803D;font-weight:600">● Active</span><span style="text-align:right"><button style="height:28px;padding:0 10px;border:1px solid #F3C2C2;background:#fff;color:#B91C1C;border-radius:6px;font:600 12px Poppins">Revoke</button></span>
+        </div>
+      </div>
+      <div style="font-size:11.5px;color:#6B7689">Expired sessions load only when “Expired” is selected · last 7 days, 20 per page.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:44px 2.4fr 1.1fr 1.2fr 1.8fr 1fr 230px;align-items:center;padding:12px 16px;border-bottom:1px solid #EEF2F7;background:#F7FAFE;font-size:13px">
+      <span style="color:#0070E0">☑</span>
+      <div style="display:flex;gap:10px;align-items:center"><span style="color:#8A94A6">▸</span><div style="display:flex;flex-direction:column"><strong style="font-weight:600">Rahul Menon</strong><span style="font-size:12px;color:#6B7689">rahul.menon@academy.excelsoft.edu</span></div></div>
+      <span><span style="padding:3px 10px;border-radius:999px;background:#E7F6EC;color:#15803D;font-weight:600;font-size:12px">2 active</span></span>
+      <span>18 min ago</span><span>Safari · iOS · Kochi</span><span style="color:#6B7689">0</span>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button style="height:30px;padding:0 10px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins">View</button><button style="height:30px;padding:0 10px;border:1px solid #F3C2C2;background:#FEF2F2;color:#B91C1C;border-radius:7px;font:600 12px Poppins;white-space:nowrap">Revoke all (2)</button></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:44px 2.4fr 1.1fr 1.2fr 1.8fr 1fr 230px;align-items:center;padding:12px 16px;border-bottom:1px solid #EEF2F7;font-size:13px">
+      <span style="color:#8A94A6">☐</span>
+      <div style="display:flex;gap:10px;align-items:center"><span style="color:#8A94A6">▸</span><div style="display:flex;flex-direction:column"><strong style="font-weight:600">Priya Shah</strong><span style="font-size:12px;color:#6B7689">priya.shah@academy.excelsoft.edu</span></div></div>
+      <span><span style="padding:3px 10px;border-radius:999px;background:#FEF3C7;color:#B45309;font-weight:600;font-size:12px">5 active</span></span>
+      <span>4 min ago</span><span>Firefox · Ubuntu · Pune</span><span style="color:#6B7689">1</span>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button style="height:30px;padding:0 10px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins">View</button><button style="height:30px;padding:0 10px;border:1px solid #F3C2C2;background:#FEF2F2;color:#B91C1C;border-radius:7px;font:600 12px Poppins;white-space:nowrap">Revoke all (5)</button></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:44px 2.4fr 1.1fr 1.2fr 1.8fr 1fr 230px;align-items:center;padding:12px 16px;border-bottom:1px solid #EEF2F7;font-size:13px">
+      <span style="color:#8A94A6">☐</span>
+      <div style="display:flex;gap:10px;align-items:center"><span style="color:#8A94A6">▸</span><div style="display:flex;flex-direction:column"><strong style="font-weight:600">Karthik Rao</strong><span style="font-size:12px;color:#6B7689">karthik.rao@academy.excelsoft.edu</span></div></div>
+      <span><span style="padding:3px 10px;border-radius:999px;background:#E7F6EC;color:#15803D;font-weight:600;font-size:12px">1 active</span></span>
+      <span>9 min ago</span><span>Chrome · Windows · Chennai</span><span style="color:#6B7689">3</span>
+      <div style="display:flex;justify-content:flex-end;gap:8px"><button style="height:30px;padding:0 10px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins">View</button><button style="height:30px;padding:0 10px;border:1px solid #F3C2C2;background:#FEF2F2;color:#B91C1C;border-radius:7px;font:600 12px Poppins;white-space:nowrap">Revoke all (1)</button></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font-size:12.5px;color:#6B7689">
+      <span style="white-space:nowrap">Showing 1–25 of 41 accounts with sessions on 17 Aug 2026</span>
+      <div style="display:flex;gap:6px"><button style="height:30px;padding:0 12px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins;white-space:nowrap">‹ Prev</button><button style="height:30px;padding:0 12px;border:1px solid #D6DEE9;background:#fff;border-radius:7px;font:500 12px Poppins;white-space:nowrap">Next ›</button></div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div style="width:460px;background:#fff;border:1px solid #E3E8F0;border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,.12);overflow:hidden">
+      <div style="padding:14px 18px;background:#0a4a8c;color:#fff;font-weight:600;font-size:15px">Revoke all sessions?</div>
+      <div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px;font-size:13px">
+        <span>Revoke all <strong>3 active sessions</strong> for Anita Kulkarni? She’ll be signed out on every device.</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;color:#4B5668;font-weight:500">Reason</span><div style="height:36px;border:1px solid #D6DEE9;border-radius:8px;display:flex;align-items:center;padding:0 12px">Security concern ▾</div></div>
+        <span style="display:flex;gap:8px;align-items:center">☐ Also require password reset on next sign-in</span>
+        <div style="display:flex;justify-content:flex-end;gap:8px"><button style="height:34px;padding:0 14px;border:1px solid #D6DEE9;background:#fff;border-radius:8px;font:500 13px Poppins">Cancel</button><button style="height:34px;padding:0 14px;border:none;background:#DC2626;color:#fff;border-radius:8px;font:600 13px Poppins">Revoke 3 sessions</button></div>
+      </div>
+    </div>
+    <div style="width:300px;background:#fff;border:1px solid #E3E8F0;border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,.12);padding:14px;display:flex;flex-direction:column;gap:10px;font-size:12.5px">
+      <strong style="color:#0a4a8c;font-size:13px">Date filter</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="white-space:nowrap;padding:4px 10px;border-radius:999px;border:1px solid #D6DEE9">Today</span><span style="white-space:nowrap;padding:4px 10px;border-radius:999px;border:1px solid #D6DEE9">Yesterday</span><span style="white-space:nowrap;padding:4px 10px;border-radius:999px;border:1px solid #D6DEE9">Last 7 days</span><span style="white-space:nowrap;padding:4px 10px;border-radius:999px;background:#0070E0;color:#fff">Specific date</span><span style="white-space:nowrap;padding:4px 10px;border-radius:999px;border:1px solid #D6DEE9">Range</span></div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11.5px;color:#6B7689"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+        <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+        <span style="background:#0070E0;color:#fff;border-radius:6px;padding:3px 0;font-weight:600">17</span><span style="color:#C9D3E0">18</span><span style="color:#C9D3E0">19</span><span style="color:#C9D3E0">20</span><span style="color:#C9D3E0">21</span><span style="color:#C9D3E0">22</span><span style="color:#C9D3E0">23</span></div>
+      <div style="display:flex;gap:8px;align-items:center"><span style="color:#4B5668">Time</span><div style="flex:1;height:30px;border:1px solid #D6DEE9;border-radius:7px;display:flex;align-items:center;padding:0 8px">00:00</div><span>–</span><div style="flex:1;height:30px;border:1px solid #D6DEE9;border-radius:7px;display:flex;align-items:center;padding:0 8px">23:59</div></div>
+      <span style="color:#6B7689;text-wrap:pretty">Up to 90 days back. Future dates disabled.</span>
+    </div>
+    <div style="font-size:12.5px;color:#6B7689;max-width:340px;padding-top:6px;text-wrap:pretty"><strong style="color:#1B2433">How the date filter works:</strong> a session matches if it was active at any point in the window (started before the end, ended or expired after the start). Counts then reflect that window, and Active / Expired / All still applies. Clearing the date returns to the live view.<br><br>Confirmation shown for “Revoke all”. Single-session revoke uses the same dialog with the device name and no password-reset option. Every revoke writes to the Audit Log with the selected reason.</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
